@@ -1,0 +1,65 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Vault
+    network: mainnet
+    source:
+      address: "0xe8B6820b74533c27786E4724a578Bfca28D97BD1"
+      abi: Vault
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - EligibilityDeployed
+        - EnableMintUpdated
+        - EnableRandomRedeemUpdated
+        - EnableTargetRedeemUpdated
+        - ManagerSet
+        - MintFeeUpdated
+        - Minted
+        - OwnershipTransferred
+        - RandomRedeemFeeUpdated
+        - Redeemed
+        - Swapped
+        - TargetRedeemFeeUpdated
+        - Transfer
+        - VaultInit
+      abis:
+        - name: Vault
+          file: ./abis/Vault.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: EligibilityDeployed(uint256,address)
+          handler: handleEligibilityDeployed
+        - event: EnableMintUpdated(bool)
+          handler: handleEnableMintUpdated
+        - event: EnableRandomRedeemUpdated(bool)
+          handler: handleEnableRandomRedeemUpdated
+        - event: EnableTargetRedeemUpdated(bool)
+          handler: handleEnableTargetRedeemUpdated
+        - event: ManagerSet(address)
+          handler: handleManagerSet
+        - event: MintFeeUpdated(uint256)
+          handler: handleMintFeeUpdated
+        - event: Minted(uint256[],uint256[],address)
+          handler: handleMinted
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: RandomRedeemFeeUpdated(uint256)
+          handler: handleRandomRedeemFeeUpdated
+        - event: Redeemed(uint256[],uint256[],address)
+          handler: handleRedeemed
+        - event: Swapped(uint256[],uint256[],uint256[],uint256[],address)
+          handler: handleSwapped
+        - event: TargetRedeemFeeUpdated(uint256)
+          handler: handleTargetRedeemFeeUpdated
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: VaultInit(indexed uint256,address,bool,bool)
+          handler: handleVaultInit
+      file: ./src/vault.ts
