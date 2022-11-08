@@ -1,6 +1,56 @@
-type ExampleEntity @entity {
+type Vault @entity {
   id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  spender: Bytes! # address
+  vaultId: BigInt!
+  name: String!
+  symbol: String!
+  assetAddress: Bytes! # address
+  is1155: Boolean!
+  allowAllItems: Boolean!
+  allHoldings: BigInt!
+  totalHoldings: BigInt! 
+}
+type VaultFee @entity {
+  id: ID!
+  vault: Vault!
+  mintFee: Bytes!
+  randomRedeemFee: Bytes!
+  targetRedeemFee: Bytes!
+  randomSwapFee: Bytes!
+  targetSwapFee: Bytes! # address
+}
+type FactoryFee @entity {
+  id: ID!
+  mintFee: Bytes!
+  randomRedeemFee: Bytes!
+  targetRedeemFee: Bytes!
+  randomSwapFee: Bytes!
+  targetSwapFee: Bytes! # address
+}
+type FeeDistributor @entity {
+  id: ID!
+  feeDistributor: Bytes!
+}
+type EligibilityManager @entity {
+  id: ID!
+  eligibilityManager: Bytes!
+}
+type Swap @entity {
+  id: ID!
+  vault: Vault!
+  amount: BigInt!
+  tokenId: BigInt!
+  specificIds: BigInt!
+}
+type Redeem @entity {
+  id: ID!
+  vault: Vault!
+  amount: BigInt!
+  tokenId: BigInt!
+  specificIds: BigInt!
+}
+type Mint @entity {
+  id: ID!
+  vault: Vault!
+  amount: BigInt!
+  account: BigInt!
 }

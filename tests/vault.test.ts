@@ -7,7 +7,6 @@ import {
   afterAll
 } from "matchstick-as/assembly/index"
 import { Address, BigInt } from "@graphprotocol/graph-ts"
-import { ExampleEntity } from "../generated/schema"
 import { Approval } from "../generated/Vault/Vault"
 import { handleApproval } from "../src/vault"
 import { createApprovalEvent } from "./vault-utils"

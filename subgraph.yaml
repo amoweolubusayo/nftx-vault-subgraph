@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.4
 schema:
   file: ./schema.graphql
 dataSources:
@@ -7,10 +7,11 @@ dataSources:
     network: mainnet
     source:
       address: "0xe8B6820b74533c27786E4724a578Bfca28D97BD1"
-      abi: Vault
+      abi: NFTXVault
+      startBlock: 12675814
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
         - Approval
@@ -29,8 +30,8 @@ dataSources:
         - Transfer
         - VaultInit
       abis:
-        - name: Vault
-          file: ./abis/Vault.json
+        - name: NFTXVault
+          file: ./abis/NFTXVault.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,uint256)
           handler: handleApproval
