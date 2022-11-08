@@ -3,7 +3,7 @@ type Vault @entity {
   vaultId: BigInt!
   name: String!
   symbol: String!
-  assetAddress: Bytes! # address
+  assetAddress: Bytes! 
   is1155: Boolean!
   allowAllItems: Boolean!
   allHoldings: BigInt!
@@ -12,19 +12,11 @@ type Vault @entity {
 type VaultFee @entity {
   id: ID!
   vault: Vault!
-  mintFee: Bytes!
-  randomRedeemFee: Bytes!
-  targetRedeemFee: Bytes!
-  randomSwapFee: Bytes!
-  targetSwapFee: Bytes! # address
+  Fee: Fee!
 }
 type FactoryFee @entity {
   id: ID!
-  mintFee: Bytes!
-  randomRedeemFee: Bytes!
-  targetRedeemFee: Bytes!
-  randomSwapFee: Bytes!
-  targetSwapFee: Bytes! # address
+  Fee: Fee!
 }
 type FeeDistributor @entity {
   id: ID!
@@ -53,4 +45,14 @@ type Mint @entity {
   vault: Vault!
   amount: BigInt!
   account: BigInt!
+}
+
+type Fee @entity {
+  id: ID!
+  vault: Vault!
+  mintFee: Bytes!
+  randomRedeemFee: Bytes!
+  targetRedeemFee: Bytes!
+  randomSwapFee: Bytes!
+  targetSwapFee: Bytes! 
 }
